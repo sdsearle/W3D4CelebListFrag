@@ -72,6 +72,7 @@ public class CelebListFragment extends Fragment implements RecyclerViewAdapter.P
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+        final CelebListFragment tmp = this;
         tbView = view.findViewById(R.id.tbChangeView);
 
         rv_list = view.findViewById(R.id.rvCelebList);
@@ -93,6 +94,7 @@ public class CelebListFragment extends Fragment implements RecyclerViewAdapter.P
                     currentRV = R.layout.rv_list_grid_item;
                     RecyclerViewAdapter adapter = new RecyclerViewAdapter(celeberties, getContext(), currentRV);
                     rv_list.setAdapter(adapter);
+                    adapter.setAdapter2(tmp);
                     layoutManager = new LinearLayoutManager(getContext());
                     itemAnimator = new DefaultItemAnimator();
                     rv_list.setLayoutManager(layoutManager);
@@ -104,6 +106,7 @@ public class CelebListFragment extends Fragment implements RecyclerViewAdapter.P
                     currentRV = R.layout.rv_list_item;
                     RecyclerViewAdapter adapter = new RecyclerViewAdapter(celeberties, getContext(),currentRV);
                     rv_list.setAdapter(adapter);
+                    adapter.setAdapter2(tmp);
                     layoutManager = new LinearLayoutManager(getContext());
                     itemAnimator = new DefaultItemAnimator();
                     rv_list.setLayoutManager(layoutManager);

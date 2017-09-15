@@ -20,6 +20,8 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
+    private View rlContainer;
+    private View glContainer;
     List<Celebrity> celeberties = new ArrayList<>();
     Context context;
     int layout;
@@ -73,14 +75,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             celebName = itemView.findViewById(R.id.tvCelebName);
             celebImg = itemView.findViewById(R.id.ivCelebImg);
+            rlContainer = itemView.findViewById(R.id.rlContainer);
+            glContainer = itemView.findViewById(R.id.glContainer);
 
-            itemView.findViewById(R.id.rlContainer).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    listener.itemClicked(position);
-                }
-            });
+            if(rlContainer != null) {
+                rlContainer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int position = getAdapterPosition();
+                        listener.itemClicked(position);
+                    }
+                });
+            }
+
+            if(glContainer != null) {
+                glContainer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int position = getAdapterPosition();
+                        listener.itemClicked(position);
+                    }
+                });
+            }
 
         }
     }
