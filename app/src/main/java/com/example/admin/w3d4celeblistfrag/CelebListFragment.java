@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -86,6 +87,17 @@ public class CelebListFragment extends Fragment implements RecyclerViewAdapter.P
         rv_list.setItemAnimator(itemAnimator);
 
         tbView.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          if (tbView.isChecked()) {
+                                              rv_list.setLayoutManager(new LinearLayoutManager(getContext()));
+                                          } else {
+                                              rv_list.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                                          }
+                                      }
+                                  });
+
+        /*tbView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(currentRV == R.layout.rv_list_item){
@@ -113,7 +125,7 @@ public class CelebListFragment extends Fragment implements RecyclerViewAdapter.P
                     rv_list.setItemAnimator(itemAnimator);
                 }
             }
-        });
+        });*/
 
         super.onViewCreated(view, savedInstanceState);
     }
