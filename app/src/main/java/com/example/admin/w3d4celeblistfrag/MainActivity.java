@@ -27,15 +27,15 @@ public class MainActivity extends AppCompatActivity implements CelebListFragment
         celeberties.add(new Celebrity("Guy-Manuel de Homem-Christo", "Daft Punk",43,67,R.drawable.daftpunk));
         celeberties.add(new Celebrity("Morgan Freeman", "The Dark Night",80,74,R.drawable.morganfreeman));
 
-        CelebListFragment tmp = (CelebListFragment) getSupportFragmentManager().findFragmentByTag(CELEB_LIST_FRAG_TAG);
+       /* CelebListFragment tmp = (CelebListFragment) getSupportFragmentManager().findFragmentByTag(CELEB_LIST_FRAG_TAG);
         if(tmp != null) {
             getSupportFragmentManager().beginTransaction().remove(tmp).commit();
-        }
+        }*/
 
         CelebListFragment celebLF = createCelebListInfo(celeberties);
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.flFragList, celebLF, CELEB_LIST_FRAG_TAG)
+                .replace(R.id.flFragList, celebLF, CELEB_LIST_FRAG_TAG)
                 .addToBackStack(null)
                 .commit();
     }
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity implements CelebListFragment
 
     @Override
     public void onFragmentInteraction(int position) {
-        CelebInfoFragment tmp = (CelebInfoFragment) getSupportFragmentManager().findFragmentByTag(CELEB_DISPLAY_FRAG_TAG);
+        /*CelebInfoFragment tmp = (CelebInfoFragment) getSupportFragmentManager().findFragmentByTag(CELEB_DISPLAY_FRAG_TAG);
         if(tmp != null) {
             getSupportFragmentManager().beginTransaction().remove(tmp).commit();
-        }
+        }*/
         CelebInfoFragment celebInfoFragment = createCelebListInfoFragment(position);
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.flFragDisplay, celebInfoFragment, CELEB_DISPLAY_FRAG_TAG)
+                .replace(R.id.flFragDisplay, celebInfoFragment, CELEB_DISPLAY_FRAG_TAG)
                 .addToBackStack(null)
                 .commit();
     }
